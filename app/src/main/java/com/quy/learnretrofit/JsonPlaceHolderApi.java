@@ -7,7 +7,9 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.internal.EverythingIsNonNull;
@@ -52,5 +54,9 @@ public interface JsonPlaceHolderApi {
     //PUT is for checking if resource is exists then update , else create new resource
     //PATCH is always for update a resource
 
-    @
+    @PUT("posts/{id}")
+    Call<Post> putPost(@Path("id") int id, @Body Post post);
+
+    @PATCH("posts/{id}")
+    Call<Post> PatchPost(@Path("id") int id, @Body Post post);
 }
