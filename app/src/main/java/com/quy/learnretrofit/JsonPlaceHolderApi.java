@@ -3,9 +3,14 @@ package com.quy.learnretrofit;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.internal.EverythingIsNonNull;
 
 public interface JsonPlaceHolderApi {
 
@@ -31,4 +36,21 @@ public interface JsonPlaceHolderApi {
 
     @GET("posts/{id}/comments")
     Call<List<Comment>> getComments(@Path("id") int postId);
+
+    //Post request
+    //public Post(int userId, String title, String body) id will be generated
+    @POST("posts")
+    Call<Post> createPost(@Body Post post); // object will be converted to json url or we have second way like below
+
+    @FormUrlEncoded
+    @POST("posts")
+    Call<Post> createPost(@Field("userId") int userId, @Field("title") String title, @Field("body") String body);
+    //userId=23&title=Hello%20world..
+
+
+    //PUT hoặc PATCH (PUT để sửa toàn bộ record, trong khi PATCH thường dùng trong trường hợp sửa 1 phần của record)
+    //PUT is for checking if resource is exists then update , else create new resource
+    //PATCH is always for update a resource
+
+    @
 }
