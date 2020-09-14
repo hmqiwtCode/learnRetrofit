@@ -47,7 +47,7 @@ public interface JsonPlaceHolderApi {
     @FormUrlEncoded
     @POST("posts")
     Call<Post> createPost(@Field("userId") int userId, @Field("title") String title, @Field("body") String body);
-    //userId=23&title=Hello%20world..
+    //userId=23&title=Hello%20world...
 
 
     //PUT hoặc PATCH (PUT để sửa toàn bộ record, trong khi PATCH thường dùng trong trường hợp sửa 1 phần của record)
